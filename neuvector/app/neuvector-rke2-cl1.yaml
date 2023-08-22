@@ -16,7 +16,7 @@ global: # required for rancher authentication (https://<Rancher_URL>/)
   cattle:
     url:
     psp:
-    enabled: false
+      wenabled: false
 
 internal: # enable when cert-manager is installed for the internal certificates
   certmanager: 
