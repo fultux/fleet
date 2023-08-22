@@ -12,7 +12,10 @@ targetCustomizations:
     version: "102.0.3+up2.6.0"
     valuesFiles:
     - "neuvector-rke2-cl1.yaml"
-  clusterName: rke2-cl1
+  clusterSelector:
+    matchLabels:
+      management.cattle.io/cluster-display-name: rke2-cl1
+
 
 - name: k3s-cl1
   helm:
@@ -20,4 +23,6 @@ targetCustomizations:
     version: "102.0.3+up2.6.0"
     valuesFiles:
     - "neuvector-k3s-cl1.yaml"
-  clusterName:  cl-k3s-1
+  clusterSelector:
+    matchLabels:
+      management.cattle.io/cluster-display-name: cl-k3s-1
