@@ -12,6 +12,4 @@ targetCustomizations:
     version: "102.0.3+up2.6.0"
     valuesFiles:
     - "neuvector-rke2-cl1.yaml"
-  clusterSelector:
-    matchLabels:
-      fleet-label: rke2-cl1
+  clusterName: rke2-cl1
