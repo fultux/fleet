@@ -18,4 +18,4 @@ targetCustomizations:
       management.cattle.io/cluster-display-name: rke2-cl1
 
 dependsOn:
-- name: fleet-longhorn-fleet-neuvector-crd
+- name: longhorn-longhorn-crd
