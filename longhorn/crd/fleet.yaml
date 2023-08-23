@@ -12,4 +12,4 @@ diff:
     kind: CustomResourceDefinition
     name: engineimages.longhorn.io
     operations:
-    - {"op":"remove", "path":"/status/storedVersions"}
+    - {"op":"remove", "path":"/status"}
