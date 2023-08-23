@@ -14,7 +14,7 @@ serviceAccount: default
 leastPrivilege: false
 global: # required for rancher authentication (https://<Rancher_URL>/)
   cattle:
-    url:https://rancher.work.lan/
+    url: https://rancher.work.lan/
     psp:
       enabled: false
 
