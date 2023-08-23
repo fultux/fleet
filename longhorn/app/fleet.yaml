@@ -17,5 +17,3 @@ targetCustomizations:
     matchLabels:
       management.cattle.io/cluster-display-name: rke2-cl1
 
-dependsOn:
-- name: fleet-longhorn-longhorn-crd
