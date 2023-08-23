@@ -68,63 +68,7 @@ defaultSettings:
 enablePSP: false
 global:
   cattle:
-    windowsCluster:
-      defaultSetting:
-        systemManagedComponentsNodeSelector: kubernetes.io/os:linux
-        taintToleration: cattle.io/os=linux:NoSchedule
-      enabled: false
-      nodeSelector:
-        kubernetes.io/os: linux
-      tolerations:
-        - effect: NoSchedule
-          key: cattle.io/os
-          operator: Equal
-          value: linux
-    systemProjectId: p-swgw7
-image:
-  csi:
-    attacher:
-      repository: rancher/mirrored-longhornio-csi-attacher
-      tag: v4.2.0
-    livenessProbe:
-      repository: rancher/mirrored-longhornio-livenessprobe
-      tag: v2.9.0
-    nodeDriverRegistrar:
-      repository: rancher/mirrored-longhornio-csi-node-driver-registrar
-      tag: v2.7.0
-    provisioner:
-      repository: rancher/mirrored-longhornio-csi-provisioner
-      tag: v3.4.1
-    resizer:
-      repository: rancher/mirrored-longhornio-csi-resizer
-      tag: v1.7.0
-    snapshotter:
-      repository: rancher/mirrored-longhornio-csi-snapshotter
-      tag: v6.2.1
-  longhorn:
-    backingImageManager:
-      repository: rancher/mirrored-longhornio-backing-image-manager
-      tag: v1.5.1
-    engine:
-      repository: rancher/mirrored-longhornio-longhorn-engine
-      tag: v1.5.1
-    instanceManager:
-      repository: rancher/mirrored-longhornio-longhorn-instance-manager
-      tag: v1.5.1
-    manager:
-      repository: rancher/mirrored-longhornio-longhorn-manager
-      tag: v1.5.1
-    shareManager:
-      repository: rancher/mirrored-longhornio-longhorn-share-manager
-      tag: v1.5.1
-    supportBundleKit:
-      repository: rancher/mirrored-longhornio-support-bundle-kit
-      tag: v0.0.25
-    ui:
-      repository: rancher/mirrored-longhornio-longhorn-ui
-      tag: v1.5.1
-  pullPolicy: IfNotPresent
-  defaultImage: true
+
 ingress:
   annotations: null
   enabled: false

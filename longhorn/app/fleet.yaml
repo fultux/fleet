@@ -1,7 +1,7 @@
 defaultNamespace: longhorn-system
 helm:
   repo: https://charts.rancher.io
-  version: "102.3.0+up1.5.1"
+  version: "102.2.2+up1.4.3"
   chart: longhorn
   releaseName: longhorn
 
@@ -10,9 +10,12 @@ targetCustomizations:
 - name: rke2-cl1
   helm:
     repo: https://charts.rancher.io
-    version: "102.3.0+up1.5.1"
+    version: "102.2.2+up1.4.3"
     valuesFiles:
     - "values-rke2-cl1.yaml"
   clusterSelector:
     matchLabels:
       management.cattle.io/cluster-display-name: rke2-cl1
+
+dependsOn:
+- name: fleet-longhorn-fleet-neuvector-crd
