@@ -17,7 +17,6 @@ global: # required for rancher authentication (https://<Rancher_URL>/)
     url: https://rancher.work.lan/
     psp:
       enabled: false
-
 internal: # enable when cert-manager is installed for the internal certificates
   certmanager: 
     enabled: false
