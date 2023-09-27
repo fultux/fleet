@@ -1,6 +1,8 @@
-# Default values for neuvector.
-# This is a YAML-formatted file.
-# Declare variables to be passed into the templates.
+global:
+  cattle:
+    psp:
+      enabled: false # PSP enablement should default to false
+    url: https://rancher.work.lan/
 
 openshift: false
 
@@ -12,11 +14,6 @@ psp: false
 rbac: true # required for rancher authentication
 serviceAccount: default
 leastPrivilege: false
-global: # required for rancher authentication (https://<Rancher_URL>/)
-  cattle:
-    url: https://rancher.work.lan/
-    psp:
-      enabled: false
 internal: # enable when cert-manager is installed for the internal certificates
   certmanager: 
     enabled: false
