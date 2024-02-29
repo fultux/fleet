@@ -1,4 +1,4 @@
-defaultNamespace: longhorn-system
+defaultNamespace: cis-benchmark
 helm:
   repo: https://charts.rancher.io
   version: "5.0.0"
