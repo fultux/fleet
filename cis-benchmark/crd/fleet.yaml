@@ -4,3 +4,11 @@ helm:
   version: "5.2.0"
   chart: cis-benchmark-crd
   releaseName: cis-benchmark-crd
+targetCustomizations:
+- name: cis-benchmark-crd
+  helm:
+    repo: https://charts.rancher.io
+    version: "5.2.0"
+  clusterSelector:
+    matchLabels:
+      management.cattle.io/cluster-display-name: minarm-test
