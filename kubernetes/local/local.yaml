@@ -1,0 +1,30 @@
+apiVersion: provisioning.cattle.io/v1
+kind: Cluster
+metadata:
+  name: local
+  namespace: fleet-local
+spec:
+  localClusterAuthEndpoint: {}
+  rke2Config:
+    kubernetesVersion: v1.26.15+rke2r1
+    rke2upgradeStrategy:
+      controlPlaneConcurrency: '1'
+      controlPlaneDrainOptions:
+        deleteEmptyDirData: true
+        disableEviction: false
+        enabled: false
+        force: true
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 120
+      workerConcurrency: '1'
+      workerDrainOptions:
+        deleteEmptyDirData: true
+        disableEviction: false
+        enabled: true
+        force: true
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 120
