@@ -1,8 +1,12 @@
 apiVersion: management.cattle.io/v3
 kind: Cluster
 metadata:
+  annotations:
+    meta.helm.sh/release-name: rancher-update-kubernetes-local
+    meta.helm.sh/release-namespace: fleet-local
   labels:
     provider.cattle.io: rke2
+    app.kubernetes.io/managed-by: Helm
   name: local
 spec:
   agentImageOverride: ''
@@ -21,7 +25,7 @@ spec:
   localClusterAuthEndpoint:
     enabled: false
   rke2Config:
-    kubernetesVersion: v1.25.16+rke2r1
+    kubernetesVersion: v1.26.15+rke2r1
     rke2upgradeStrategy:
       serverConcurrency: 1
       workerConcurrency: 1
