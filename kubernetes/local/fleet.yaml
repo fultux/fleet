@@ -1,1 +1,2 @@
 namespace: fleet-local
+defaultNamespace: fleet-local
