@@ -21,7 +21,7 @@ spec:
   localClusterAuthEndpoint:
     enabled: false
   rke2Config:
-    kubernetesVersion: v1.25.11+rke2r1
+    kubernetesVersion: v1.25.16+rke2r1
     rke2upgradeStrategy:
       serverConcurrency: 1
       workerConcurrency: 1
