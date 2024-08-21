@@ -8,8 +8,4 @@ metadata:
   namespace: fleet-local
 spec:
   localClusterAuthEndpoint: {}
-  rke2Config:
-    kubernetesVersion: v1.26.15+rke2r1
-    rke2upgradeStrategy:
-      serverConcurrency: 1
-      workerConcurrency: 1
+  kubernetesVersion: v1.26.15+rke2r1
