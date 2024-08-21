@@ -13,6 +13,7 @@ metadata:
 labels:
   provider.cattle.io: rke2
 name: local
+namespace: fleet-local
 spec:
   agentImageOverride: ''
   answers: {}
