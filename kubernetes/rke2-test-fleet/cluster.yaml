@@ -5,7 +5,7 @@ metadata:
   namespace: fleet-default
 spec:
   clusterAgentDeploymentCustomization:
-  kubernetesVersion: v1.25.16+rke2r1
+  kubernetesVersion: v1.26.15+rke2r1
   localClusterAuthEndpoint:
     caCerts: ''
     enabled: false
