@@ -4,11 +4,13 @@ diff:
   - apiVersion: provisioning.cattle.io/v1
     kind: Cluster
     name: rke2-test-fleet
+    namespace: fleet-default
     operations:
     - {"op":"remove", "path":"/spec/localClusterAuthEndpoint"}
   - apiVersion: provisioning.cattle.io/v1
     kind: Cluster
     name: rke2-test-fleet
+    namespace: fleet-default
     operations:
     - {"op":"remove", "path":"/spec/rkeConfig/etcd/disableSnapshots"}
  
