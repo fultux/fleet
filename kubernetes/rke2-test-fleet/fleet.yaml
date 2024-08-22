@@ -1,1 +1,18 @@
 defaultNamespace: fleet-default
+diff:
+  comparePatches:
+  - apiVersion: provisioning.cattle.io/v1
+    kind: Cluster
+    name: rke2-test-fleet
+    operations:
+    - {"op":"remove", "path":"/spec/localClusterAuthEndpoint/caCerts/enabled"}
+  - apiVersion: provisioning.cattle.io/v1
+    kind: Cluster
+    name: rke2-test-fleet
+    operations:
+    - {"op":"remove", "path":"/spec/localClusterAuthEndpoint/fqdn"}
+  - apiVersion: provisioning.cattle.io/v1
+    kind: Cluster
+    name: rke2-test-fleet
+    operations:
+    - {"op":"remove", "path":"/rkeConfig/etcd/disableSnapshots"}
