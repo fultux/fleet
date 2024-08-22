@@ -1,0 +1,59 @@
+apiVersion: provisioning.cattle.io/v1
+kind: Cluster
+metadata:
+  name: rke2-test-fleet
+  namespace: fleet-default
+spec:
+  clusterAgentDeploymentCustomization:
+  kubernetesVersion: v1.25.16+rke2r1
+  localClusterAuthEndpoint:
+    caCerts: ''
+    enabled: false
+    fqdn: ''
+  rkeConfig:
+    chartValues:
+      rke2-cilium: {}
+    etcd:
+      disableSnapshots: false
+      snapshotRetention: 5
+      snapshotScheduleCron: 0 */5 * * *
+    machineGlobalConfig:
+      cni: cilium
+      disable-cloud-controller: false
+      disable-kube-proxy: false
+      disable-scheduler: false
+      etcd-expose-metrics: false
+      profile: null
+      disable-apiserver: false
+      disable-controller-manager: false
+      disable-etcd: false
+      disable-network-policy: false
+      secrets-encryption: false
+    machineSelectorConfig:
+      - config:
+          protect-kernel-defaults: false
+          selinux: false
+          docker: false
+    registries:
+      configs:
+    upgradeStrategy:
+      controlPlaneConcurrency: '1'
+      controlPlaneDrainOptions:
+        deleteEmptyDirData: true
+        disableEviction: false
+        enabled: false
+        force: false
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 120
+      workerConcurrency: '1'
+      workerDrainOptions:
+        deleteEmptyDirData: true
+        disableEviction: false
+        enabled: false
+        force: false
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        skipWaitForDeleteTimeoutSeconds: 0
+        timeout: 120
