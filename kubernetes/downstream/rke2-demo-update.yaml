@@ -1,7 +1,0 @@
-apiVersion: provisioning.cattle.io/v1
-kind: Cluster
-metadata:
-  name: rke2-demo-update
-  namespace: fleet-default
-spec:
-  kubernetesVersion: v1.26.15+rke2r1
