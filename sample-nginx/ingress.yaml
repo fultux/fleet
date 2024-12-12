@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-test-ingress
+spec:
+  defaultBackend:
+    service:
+      name: nginx-service
+      port:
+        number: 80
+  ingressClassName: nginx
+  rules:
+    - host: test-kubevip.work.lan
+      http:
+        paths:
+          - backend:
+              service:
+                name: nginx-test
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
