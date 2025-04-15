@@ -68,7 +68,7 @@ defaultSettings:
 enablePSP: false
 global:
   cattle:
-
+    systemDefaultRegistry: "registry.rancher.com"
 ingress:
   annotations: null
   enabled: false
