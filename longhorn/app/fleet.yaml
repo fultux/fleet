@@ -1,19 +1,19 @@
 defaultNamespace: longhorn-system
 helm:
   repo: https://charts.rancher.io
-  version: "102.2.2+up1.4.3"
+  version: "	105.2.0+up1.8.1"
   chart: longhorn
   releaseName: longhorn
 
 
 targetCustomizations:
-- name: rke2-cl1
+- name: demo-siae-2
   helm:
     repo: https://charts.rancher.io
-    version: "102.2.2+up1.4.3"
+    version: "105.2.0+up1.8.1"
     valuesFiles:
     - "values-rke2-cl1.yaml"
   clusterSelector:
     matchLabels:
-      management.cattle.io/cluster-display-name: rke2-cl1
+      management.cattle.io/cluster-display-name: demo-siae-2
 
