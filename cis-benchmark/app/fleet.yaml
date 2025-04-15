@@ -3,4 +3,4 @@ helm:
   repo: https://charts.rancher.io
   version: "5.2.0"
   chart: rancher-cis-benchmark
-  releaseName: cis-benchmark-app
+  releaseName: rancher-cis-benchmark
