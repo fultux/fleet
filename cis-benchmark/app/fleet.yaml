@@ -1,4 +1,4 @@
-defaultNamespace: cis-benchmark
+defaultNamespace: cis-operator-system
 helm:
   repo: https://charts.rancher.io
   version: "105.4.0+up7.4.0"
