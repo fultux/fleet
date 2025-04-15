@@ -1,3 +1,1 @@
 defaultNamespace: cis-benchmark
-helm:
-  releaseName: cis-benchmark
