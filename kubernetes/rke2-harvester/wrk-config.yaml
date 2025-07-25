@@ -1,0 +1,37 @@
+apiVersion: rke-machine-config.cattle.io/v1
+cloudConfig: ""
+clusterId: ""
+clusterName: ""
+clusterType: ""
+cpuCount: "2"
+cpuPinning: false
+diskBus: ""
+diskInfo: '{"disks":[{"imageName":"images/image-h5767","bootOrder":1,"size":40}]}'
+diskSize: "0"
+enableEfi: false
+enableSecureBoot: false
+enableTpm: false
+imageName: ""
+isolateEmulatorThread: false
+keyPairName: ""
+kind: HarvesterConfig
+kubeconfigContent: ""
+memorySize: "4"
+metadata:
+  generation: 1
+  name: nc-harvester-tst-wrk-fleetcfg
+  namespace: fleet-default
+networkData: ""
+networkInfo: '{"interfaces":[{"networkName":"default/net-104","macAddress":""}]}'
+networkModel: ""
+networkName: ""
+networkType: ""
+sshPassword: "password"
+sshPort: "22"
+sshPrivateKeyPath: ""
+sshUser: rancher
+userData: >-
+  I2Nsb3VkLWNvbmZpZwpwYWNrYWdlX3VwZGF0ZTogZmFsc2UKcGFja2FnZXM6CiAgLSBxZW11LWd1ZXN0LWFnZW50CiAgLSB2aW0KICAtIGZhc3RmZXRjaApydW5jbWQ6CiAgLSAtIHN5c3RlbWN0bAogICAgLSBlbmFibGUKICAgIC0gJy0tbm93JwogICAgLSBxZW11LWd1ZXN0LWFnZW50LnNlcnZpY2UK==
+vgpuInfo: ""
+vmAffinity: ""
+vmNamespace: vms

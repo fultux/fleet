@@ -329,17 +329,9 @@ spec:
         unhealthyNodeTimeout: 0m
         machineConfigRef:
           kind: HarvesterConfig
-          name: nc-undefined-ctrl-vphpg
+          name: nc-harvester-tst-ctrl-fleetcfg
         drainBeforeDelete: true
         labels: {}
-        userData: |-
-          #cloud-config
-          package_upgrade: true
-        networkData: |-
-          version: 2
-            ethernets:
-              eth0:
-                dhcp4: true
       - name: wrk
         etcdRole: false
         controlPlaneRole: false
@@ -349,16 +341,8 @@ spec:
         unhealthyNodeTimeout: 0m
         machineConfigRef:
           kind: HarvesterConfig
-          name: nc-undefined-wrk-rfcsz
+          name: nc-harvester-tst-wrk-fleetcfg
         drainBeforeDelete: true
-        userData: |-
-          #cloud-config
-          package_upgrade: true
-        networkData: |-
-          version: 2
-            ethernets:
-              eth0:
-                dhcp4: true
         labels: {}
     #      - cloudCredentialSecretName: string
     #        controlPlaneRole: boolean
