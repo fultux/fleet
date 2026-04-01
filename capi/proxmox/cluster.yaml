@@ -1,0 +1,142 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: rke2-cluster
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 10.42.0.0/16
+    services:
+      cidrBlocks:
+        - 10.43.0.0/16
+  controlPlaneRef:
+    apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+    kind: RKE2ControlPlane
+    name: rke2-cluster-controlplane
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: ProxmoxCluster
+    name: rke2-cluster-proxmox
+
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: ProxmoxCluster
+metadata:
+  name: rke2-cluster-proxmox
+spec:
+  controlPlaneEndpoint:
+    host: "" # Will be set by CAPMOX
+    port: 6443
+  server: "proxmox-pve-url" # Replace with your Proxmox API URL
+  auth:
+    secretRef:
+      name: proxmox-credentials
+      key: token
+  sshKeys:
+    secretRef:
+      name: rke2-ssh-keys
+      key: ssh-privatekey
+---
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: RKE2ControlPlane
+metadata:
+  name: rke2-cluster-controlplane
+spec:
+  replicas: 1
+  version: v1.28.6+rke2r1 # Specify your desired RKE2 version
+  agentConfig:
+    nodeLabels:
+      - "node-role.kubernetes.io/control-plane"
+  serverConfig:
+    tlsSan:
+      - "127.0.0.1" # Replace with appropriate SANs
+  machineTemplate:
+    infrastructureRef:
+      apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+      kind: ProxmoxMachineTemplate
+      name: rke2-cluster-controlplane-template
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: ProxmoxMachineTemplate
+metadata:
+  name: rke2-cluster-controlplane-template
+spec:
+  template:
+    osType: "cloud-init"
+    vmSpec:
+      memory: 4096
+      sockets: 1
+      cores: 2
+      scsi:
+        scsihw: virtio-scsi-pci
+        0:
+          size: 32G
+          ssd: 1
+      network:
+        0:
+          bridge: vmbr0
+      vga:
+        type: std
+      clone: "ubuntu-cloud-template" # Replace with your Proxmox VM template name
+      targetNode: "pve-node-name" # Replace with your Proxmox VE node name
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachineDeployment
+metadata:
+  name: rke2-cluster-md-workers
+spec:
+  clusterName: rke2-cluster
+  replicas: 2
+  selector:
+    matchLabels:
+      cluster.x-k8s.io/cluster-name: rke2-cluster
+      cluster.x-k8s.io/deployment-name: rke2-cluster-md-workers
+  template:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+          kind: RKE2ConfigTemplate
+          name: rke2-cluster-workers-config
+      clusterName: rke2-cluster
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: ProxmoxMachineTemplate
+        name: rke2-cluster-workers-template
+      version: v1.28.6+rke2r1 # Specify your desired RKE2 version
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: RKE2ConfigTemplate
+metadata:
+  name: rke2-cluster-workers-config
+spec:
+  template:
+    spec:
+      agentConfig:
+        nodeLabels:
+          - "node-role.kubernetes.io/worker"
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: ProxmoxMachineTemplate
+metadata:
+  name: rke2-cluster-workers-template
+spec:
+  template:
+    osType: "cloud-init"
+    vmSpec:
+      memory: 4096
+      sockets: 1
+      cores: 2
+      scsi:
+        scsihw: virtio-scsi-pci
+        0:
+          size: 32G
+          ssd: 1
+      network:
+        0:
+          bridge: vmbr0
+      vga:
+        type: std
+      clone: "ubuntu-cloud-template" # Replace with your Proxmox VM template name
+      targetNode: "pve-node-name" # Replace with your Proxmox VE node name
