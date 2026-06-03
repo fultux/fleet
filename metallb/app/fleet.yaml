@@ -1,6 +1,6 @@
-namespace: metallb-system 
+namespace: metallb-system
 helm:
   releaseName: metallb
-  chart: "metallb/metallb"
+  chart: "metallb"
   repo: "https://metallb.github.io/metallb"
-  version: "v0.14.8"
+  version: "v0.16.1"
